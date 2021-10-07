@@ -17,20 +17,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.227" />
 
+
     <TextView
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="92dp"
-        android:text="Pose Ta question"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="386dp"
+        android:layout_height="60dp"
+        android:text="Pose ta question"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <EditText
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:text="Ta question"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="84dp" />
+        android:id="@+id/question"
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:hint="Pose ta question"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.129" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
