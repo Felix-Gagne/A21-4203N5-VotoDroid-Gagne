@@ -16,7 +16,7 @@ public class AjouterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("VoteDroid");
+        setTitle("VotoDroid");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter);
 

@@ -1,6 +1,7 @@
 package felix.gagne.votodroidgagne;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +15,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("VoteDroid");
+        setTitle("VotoDroid");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        Initialisation du recyclerView de la page d'acceuil.
+//        this.initRecycler();
 
-
-        binding =ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -31,4 +33,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void initRecycler()
+//    {
+//        RecyclerView recyclerView = findViewById(R.id.RecyclerView);
+//        recyclerView.setHasFixedSize(true);
+//
+//    }
 }

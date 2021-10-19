@@ -17,4 +17,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="#aaa"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="84dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

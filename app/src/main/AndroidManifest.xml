@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VotoDroidGagne">
+        <activity android:name=".VoteActivity"></activity>
         <activity
             android:name=".AjouterActivity"
             android:exported="true" />
