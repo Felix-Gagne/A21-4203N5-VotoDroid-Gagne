@@ -1,8 +1,12 @@
 package felix.gagne.votodroidgagne;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,9 +26,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     public static class MyViewHolder extends  RecyclerView.ViewHolder
     {
         public TextView tvQuestion;
+        public ImageButton btButton;
         public MyViewHolder(LinearLayout v){
             super(v);
             tvQuestion = v.findViewById(R.id.tvQuestion);
+            btButton = v.findViewById(R.id.btButton);
         }
     }
 
@@ -54,6 +60,22 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         Question questionCourante = list.get(position);
         holder.tvQuestion.setText(questionCourante.question);
         Log.i("DEBOGAGE", "appel a onBindViewHolder" + position);
+        holder.tvQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), VoteActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        holder.btButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ResultatActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
     }
 
     //renvoie la taille de la liste
@@ -63,3 +85,5 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         return list.size();
     }
 }
+
+

@@ -2,6 +2,7 @@ package felix.gagne.votodroidgagne;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,12 +14,13 @@ public class VoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("VotoDroid");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vote);
 
         binding = ActivityVoteBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        setTitle("VotoDroid");
+
     }
 }

@@ -16,14 +16,13 @@ public class AjouterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("VotoDroid");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ajouter);
-
 
         binding = ActivityAjouterBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        setTitle("VotoDroid");
 
         binding.poseLaQuestion.setOnClickListener(new View.OnClickListener() {
             @Override

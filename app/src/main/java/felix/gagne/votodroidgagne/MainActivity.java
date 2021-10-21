@@ -1,6 +1,8 @@
 package felix.gagne.votodroidgagne;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         // initialiser l'ecran
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intention);
             }
         });
+
+
     }
 
     private void initRecycler()
