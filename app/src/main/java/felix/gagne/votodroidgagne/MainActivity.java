@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -69,5 +72,29 @@ public class MainActivity extends AppCompatActivity {
             adapter.list.add(q);
         }
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+        if(id == R.id.delete_action)
+        {
+            Toast.makeText(getApplicationContext(), "Questions supprimé", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (id == R.id.deletevt_action)
+        {
+            Toast.makeText(getApplicationContext(), "Votes suprimé", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

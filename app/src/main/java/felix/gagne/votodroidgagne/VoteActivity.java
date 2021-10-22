@@ -22,5 +22,12 @@ public class VoteActivity extends AppCompatActivity {
 
         setTitle("VotoDroid");
 
+        binding.bouttonVote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VoteActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
