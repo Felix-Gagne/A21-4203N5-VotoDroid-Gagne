@@ -10,7 +10,7 @@
         android:id="@+id/tvQuestion"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="40dp"
+        android:layout_height="match_parent"
         android:textSize="20dp"
         />
 
@@ -18,9 +18,9 @@
     <ImageButton
         android:id="@+id/btButton"
         style="@android:style/Widget.ImageButton"
-        android:layout_width="-15dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight=".1"
         android:src="@android:drawable/ic_menu_sort_by_size" />
 
 </LinearLayout>

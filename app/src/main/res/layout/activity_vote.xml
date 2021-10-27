@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VoteActivity">
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Que penses-tu de l'ascension de skywalker?"
+        android:textSize="30dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="25dp"
+        />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:numStars="5"
+        android:stepSize="1"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="25dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Nom du votant"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="25dp"
+        />
 
     <Button
         android:id="@+id/bouttonVote"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
         android:text="Vote"
         tools:layout_editor_absoluteX="25dp"
         tools:layout_editor_absoluteY="367dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="50dp"
-        android:hint="Nom du votant"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="276dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
