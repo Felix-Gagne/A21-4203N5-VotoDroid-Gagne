@@ -1,10 +1,9 @@
 package felix.gagne.votodroidgagne;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.Random;
-
+import felix.gagne.votodroidgagne.dao.MaBD;
 import felix.gagne.votodroidgagne.databinding.ActivityMainBinding;
+import felix.gagne.votodroidgagne.modele.Question;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
         this.initRecycler();
         this.remplacer();
 
+        MaBD bd = Room.databaseBuilder(getApplicationContext(), MaBD.class, "Questions")
+                .allowMainThreadQueries()
+                .build();
 
+        Question question = new Question();
+        question.question = "Bonjour";
+        bd.dao().saveQuestion(question);
 
         binding.bouttonAjouter.setOnClickListener(new View.OnClickListener() {
             @Override

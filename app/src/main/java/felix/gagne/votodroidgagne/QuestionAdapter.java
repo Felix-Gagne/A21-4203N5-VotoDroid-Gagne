@@ -1,6 +1,5 @@
 package felix.gagne.votodroidgagne;
 
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import felix.gagne.votodroidgagne.modele.Question;
 
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyViewHolder>{
