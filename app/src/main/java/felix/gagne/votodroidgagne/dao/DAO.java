@@ -1,6 +1,7 @@
 package felix.gagne.votodroidgagne.dao;
 
 import felix.gagne.votodroidgagne.modele.Question;
+import felix.gagne.votodroidgagne.modele.Vote;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -17,6 +18,9 @@ public abstract class DAO {
 
     @Insert
     public abstract List<Long> saveQuestions(List<Question> questions);
+
+    @Insert
+    public abstract Long saveVote(Vote vote);
 
     @Query("SELECT * FROM Question")
     public abstract List<Question> tousLesQuestions();

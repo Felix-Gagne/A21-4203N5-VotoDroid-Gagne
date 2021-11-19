@@ -9,11 +9,11 @@ import androidx.room.PrimaryKey;
 public class Vote {
 
     @PrimaryKey(autoGenerate = true)
-    Long id;
+    public Long id;
 
     @ColumnInfo
-    Long value;
+    public Long value;
 
     @ColumnInfo
-    String nomDuVotant;
+    public String nomDuVotant;
 }

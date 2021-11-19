@@ -3,7 +3,7 @@ package felix.gagne.votodroidgagne.service;
 import androidx.room.Room;
 
 import felix.gagne.votodroidgagne.dao.MaBD;
-//import org.sabourin.exceptions.MauvaiseQuestion;
+import felix.gagne.votodroidgagne.exceptions.MauvaisVote;
 import felix.gagne.votodroidgagne.exceptions.MauvaiseQuestion;
 import felix.gagne.votodroidgagne.modele.Question;
 import felix.gagne.votodroidgagne.modele.Vote;
@@ -49,8 +49,15 @@ public class Service {
     }
 
 
-    public void creerVote(Vote vdVote) {
+    public void creerVote(Vote vdVote) throws MauvaisVote {
+        if(vdVote.value == 0) throw new MauvaisVote("Le vote n'a pas de valeur.");
 
+        if (vdVote.nomDuVotant == null || vdVote.nomDuVotant.trim().length() == 0) throw new MauvaisVote("Veuillez inserer le nom du votant");
+        if (vdVote.nomDuVotant.trim().length() < 3) throw new MauvaisVote("Nom du votant trop court.");
+        if (vdVote.nomDuVotant.trim().length() > 15) throw new MauvaisVote("Nom du votant trop long.");
+
+        //Ajout
+        vdVote.id = maBD.dao().saveVote(vdVote);
     }
 
 
