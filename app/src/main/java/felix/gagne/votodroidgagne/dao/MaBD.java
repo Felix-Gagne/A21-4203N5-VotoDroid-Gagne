@@ -7,7 +7,7 @@ import androidx.room.TypeConverters;
 import felix.gagne.votodroidgagne.modele.Question;
 
 @Database(entities = {Question.class},
-        version = 1)
+        version = 2)
 @TypeConverters({Converters.class})
 public abstract class MaBD extends RoomDatabase {
     public abstract DAO dao();
