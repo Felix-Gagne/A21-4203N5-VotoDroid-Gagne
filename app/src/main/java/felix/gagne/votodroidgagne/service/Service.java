@@ -53,7 +53,7 @@ public class Service {
         if(vdVote.value == 0) throw new MauvaisVote("Le vote n'a pas de valeur.");
 
         if (vdVote.nomDuVotant == null || vdVote.nomDuVotant.trim().length() == 0) throw new MauvaisVote("Veuillez inserer le nom du votant");
-        if (vdVote.nomDuVotant.trim().length() < 3) throw new MauvaisVote("Nom du votant trop court.");
+        if (vdVote.nomDuVotant.trim().length() < 4) throw new MauvaisVote("Nom du votant trop court.");
         if (vdVote.nomDuVotant.trim().length() > 15) throw new MauvaisVote("Nom du votant trop long.");
 
         //Ajout

@@ -12,7 +12,7 @@ public class Vote {
     public Long id;
 
     @ColumnInfo
-    public Long value;
+    public float value;
 
     @ColumnInfo
     public String nomDuVotant;

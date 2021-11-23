@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        Question question = new Question();
-        question.question = "Bonjour";
-        bd.dao().saveQuestion(question);
+
 
         binding.bouttonAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
