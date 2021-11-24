@@ -14,4 +14,7 @@ public class Question {
 
     @ColumnInfo
     public String question;
+
+    @ColumnInfo
+    public int nbDeVote;
 }

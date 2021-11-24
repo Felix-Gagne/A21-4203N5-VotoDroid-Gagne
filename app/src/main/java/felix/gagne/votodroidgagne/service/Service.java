@@ -56,6 +56,13 @@ public class Service {
         if (vdVote.nomDuVotant.trim().length() < 4) throw new MauvaisVote("Nom du votant trop court.");
         if (vdVote.nomDuVotant.trim().length() > 15) throw new MauvaisVote("Nom du votant trop long.");
 
+        //vote de la meme personne
+        for (Vote v : toutesLesVotes()){
+            if(v.nomDuVotant.toUpperCase().equals(vdVote.nomDuVotant.toUpperCase())){
+                throw new MauvaisVote("Le votant à déjà voté pour cette question.");
+            }
+        }
+
         //Ajout
         vdVote.id = maBD.dao().saveVote(vdVote);
     }
@@ -63,7 +70,22 @@ public class Service {
 
     public List<Question> toutesLesQuestions() {
         //TODO Trier la liste reçue en BD par nombre de votes et la retourner
-        return new ArrayList<>();
+        List list = new ArrayList();
+        for(Question q : maBD.dao().tousLesQuestions())
+        {
+            list.add(q);
+        }
+        return list;
+    }
+
+    public List<Vote> toutesLesVotes()
+    {
+        List list = new ArrayList();
+        for(Vote v : maBD.dao().tousLesVote())
+        {
+            list.add(v);
+        }
+        return list;
     }
 
 

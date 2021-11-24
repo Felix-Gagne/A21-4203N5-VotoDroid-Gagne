@@ -25,4 +25,7 @@ public abstract class DAO {
     @Query("SELECT * FROM Question")
     public abstract List<Question> tousLesQuestions();
 
+    @Query("SELECT * FROM Vote")
+    public abstract List<Vote> tousLesVote();
+
 }

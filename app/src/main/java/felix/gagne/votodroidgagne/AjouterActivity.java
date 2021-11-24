@@ -57,6 +57,7 @@ public class AjouterActivity extends AppCompatActivity {
         {
             Question laQuestion = new Question();
             laQuestion.question = text.getText().toString();
+            laQuestion.nbDeVote = 0;
             service.creerQuestion(laQuestion);
             Intent i1 = new Intent(AjouterActivity.this, MainActivity.class);
             startActivity(i1);

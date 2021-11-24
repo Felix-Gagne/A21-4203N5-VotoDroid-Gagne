@@ -3,6 +3,7 @@ package felix.gagne.votodroidgagne.modele;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -16,4 +17,5 @@ public class Vote {
 
     @ColumnInfo
     public String nomDuVotant;
+
 }

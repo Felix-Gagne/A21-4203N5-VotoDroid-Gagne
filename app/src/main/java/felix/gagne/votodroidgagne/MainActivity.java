@@ -12,14 +12,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.List;
+
 import felix.gagne.votodroidgagne.dao.MaBD;
 import felix.gagne.votodroidgagne.databinding.ActivityMainBinding;
 import felix.gagne.votodroidgagne.modele.Question;
+import felix.gagne.votodroidgagne.service.Service;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     QuestionAdapter adapter;
+    private MaBD bd;
+    private Service service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +37,18 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("VotoDroid");
 
+        MaBD bd = Room.databaseBuilder(getApplicationContext(), MaBD.class, "Questions")
+                .allowMainThreadQueries()
+                .build();
+
+        service = Service.getInstance(bd);
 
         //Initialisation du recyclerView de la page d'acceuil.
         this.initRecycler();
         this.remplacer();
 
-        MaBD bd = Room.databaseBuilder(getApplicationContext(), MaBD.class, "Questions")
-                .allowMainThreadQueries()
-                .build();
 
-
-
-        binding.bouttonAjouter.setOnClickListener(new View.OnClickListener() {
+        binding.bouttonAjouter.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
                 Intent intention = new Intent(MainActivity.this, AjouterActivity.class);
@@ -69,11 +74,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void remplacer(){
-        for (int i = 0 ; i < 20 ; i++) {
-            Question q = new Question();
-            q.question = "Question #" + i;
-            adapter.list.add(q);
+        adapter.list.clear();
+        for(Question q : service.toutesLesQuestions())
+        {
+           adapter.list.add(q);
         }
+
         adapter.notifyDataSetChanged();
     }
 
@@ -100,4 +106,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void supprimerQuestions()
+    {
+
+    }
+
+    private void supprimerVote()
+    {
+
+    }
+
 }
