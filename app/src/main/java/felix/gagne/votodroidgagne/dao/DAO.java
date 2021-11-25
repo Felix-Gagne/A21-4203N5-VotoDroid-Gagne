@@ -28,4 +28,10 @@ public abstract class DAO {
     @Query("SELECT * FROM Vote")
     public abstract List<Vote> tousLesVote();
 
+    @Query("DELETE FROM Question")
+    public abstract void supprimerQuestionBd();
+
+    @Query("DELETE FROM Vote")
+    public abstract void supprimerVoteBd();
+
 }

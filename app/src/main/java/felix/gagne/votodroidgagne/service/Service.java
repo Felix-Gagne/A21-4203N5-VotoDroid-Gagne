@@ -102,4 +102,16 @@ public class Service {
     public Map<Integer, Integer> distributionVotes(Question question) {
         return null;
     }
+
+    public void supprimerQuestion()
+    {
+        maBD.dao().supprimerQuestionBd();
+        toutesLesQuestions().clear();
+    }
+
+    public void supprimerVotes()
+    {
+        maBD.dao().supprimerVoteBd();
+        toutesLesVotes().clear();
+    }
 }

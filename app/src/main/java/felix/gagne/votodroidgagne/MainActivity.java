@@ -96,25 +96,27 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.delete_action)
         {
+            service.supprimerQuestion();
             Toast.makeText(getApplicationContext(), "Questions supprimé", Toast.LENGTH_SHORT).show();
+            Intent refresh = new Intent(this, MainActivity.class);
+            startActivity(refresh);
+            overridePendingTransition(0, 0);
+            this.finish();
+            overridePendingTransition(0, 0);
             return true;
         }
         if (id == R.id.deletevt_action)
         {
+            service.supprimerVotes();
             Toast.makeText(getApplicationContext(), "Votes suprimé", Toast.LENGTH_SHORT).show();
+            Intent refresh = new Intent(this, MainActivity.class);
+            startActivity(refresh);
+            overridePendingTransition(0, 0);
+            this.finish();
+            overridePendingTransition(0, 0);
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void supprimerQuestions()
-    {
-
-    }
-
-    private void supprimerVote()
-    {
-
     }
 
 }
