@@ -10,16 +10,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import felix.gagne.votodroidgagne.dao.MaBD;
 import felix.gagne.votodroidgagne.modele.Question;
 
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyViewHolder>{
     public List<Question> list;
-
 
     //Donne une référance à la vue pour chaque data item
     //Les data items complexe peuvent avoir besoin de plus de 1 vue par item
@@ -65,6 +66,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), VoteActivity.class);
+                intent.putExtra("idQuestion", questionCourante.id);
                 v.getContext().startActivity(intent);
             }
         });

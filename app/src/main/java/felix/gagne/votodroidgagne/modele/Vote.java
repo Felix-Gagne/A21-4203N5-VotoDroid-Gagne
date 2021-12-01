@@ -18,4 +18,7 @@ public class Vote {
     @ColumnInfo
     public String nomDuVotant;
 
+    @ColumnInfo
+    public Long idQuestion;
+
 }

@@ -53,10 +53,12 @@ public class VoteActivity extends AppCompatActivity {
 
         try
         {
+            Long idQuestion = getIntent().getLongExtra("idQuestion", 0);
             Vote vote = new Vote();
             vote.nomDuVotant = nomDuVotant.getText().toString();
             vote.value = valeurVote.getRating();
-            service.creerVote(vote);
+            vote.idQuestion = idQuestion;
+            service.creerVote(vote, idQuestion);
             Intent i1 = new Intent(VoteActivity.this, MainActivity.class);
             startActivity(i1);
         }

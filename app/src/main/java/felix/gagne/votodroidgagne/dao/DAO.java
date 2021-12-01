@@ -34,4 +34,7 @@ public abstract class DAO {
     @Query("DELETE FROM Vote")
     public abstract void supprimerVoteBd();
 
+//    @Query("UPDATE Question SET nbDeVote = nbDeVote + 1 WHERE id = ")
+//    public abstract void ajouterVote(Long qId);
+
 }

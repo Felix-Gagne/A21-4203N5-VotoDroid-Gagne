@@ -49,7 +49,7 @@ public class Service {
     }
 
 
-    public void creerVote(Vote vdVote) throws MauvaisVote {
+    public void creerVote(Vote vdVote, Long questionID) throws MauvaisVote {
         if(vdVote.value == 0) throw new MauvaisVote("Le vote n'a pas de valeur.");
 
         if (vdVote.nomDuVotant == null || vdVote.nomDuVotant.trim().length() == 0) throw new MauvaisVote("Veuillez inserer le nom du votant");
@@ -62,6 +62,13 @@ public class Service {
                 throw new MauvaisVote("Le votant à déjà voté pour cette question.");
             }
         }
+
+        //nb de vote par question
+//        for(Question q : toutesLesQuestions()){
+//            if(questionID == q.id){
+//                maBD.dao().ajouterVote();
+//            }
+//        }
 
         //Ajout
         vdVote.id = maBD.dao().saveVote(vdVote);
