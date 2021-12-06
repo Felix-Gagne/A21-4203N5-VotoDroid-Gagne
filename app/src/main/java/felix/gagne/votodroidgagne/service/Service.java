@@ -58,7 +58,7 @@ public class Service {
 
         //vote de la meme personne
         for (Vote v : toutesLesVotes()){
-            if(v.nomDuVotant.toUpperCase().equals(vdVote.nomDuVotant.toUpperCase())){
+            if(v.nomDuVotant.toUpperCase().equals(vdVote.nomDuVotant.toUpperCase()) && questionID == v.idQuestion){
                 throw new MauvaisVote("Le votant à déjà voté pour cette question.");
             }
         }
@@ -120,5 +120,16 @@ public class Service {
     {
         maBD.dao().supprimerVoteBd();
         toutesLesVotes().clear();
+    }
+
+    public void accessQuestion(Question vdQuestion)
+    {
+        for(Vote v : toutesLesVotes())
+        {
+            if(v.idQuestion == vdQuestion.id)
+            {
+                
+            }
+        }
     }
 }
