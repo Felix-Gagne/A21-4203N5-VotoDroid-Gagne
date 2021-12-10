@@ -1,8 +1,10 @@
 package felix.gagne.votodroidgagne;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -13,13 +15,23 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import felix.gagne.votodroidgagne.dao.MaBD;
+import felix.gagne.votodroidgagne.modele.Question;
+import felix.gagne.votodroidgagne.modele.Vote;
+import felix.gagne.votodroidgagne.service.Service;
 
 public class ResultatActivity extends AppCompatActivity {
 
     BarChart chart;
+    private MaBD bd;
+    private Service service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +41,6 @@ public class ResultatActivity extends AppCompatActivity {
         setTitle("VotoDroid");
 
         chart = findViewById(R.id.graph);
-
 
         /* Settings for the graph - Change me if you want*/
         chart.setMaxVisibleValueCount(6);
@@ -53,13 +64,36 @@ public class ResultatActivity extends AppCompatActivity {
         chart.getDescription().setEnabled(false);
         chart.getAxisRight().setEnabled(false);
 
+        //Initier la BD
+        bd = Room.databaseBuilder(getApplicationContext(), MaBD.class, "Questions")
+                .allowMainThreadQueries()
+                .build();
+
+        //Initier service
+        service = Service.getInstance(bd);
+
+        //idQuestion
+        Long idQuestion = getIntent().getLongExtra("idQuestion", 0);
+
+        //Set la question.
+        TextView question = (TextView)findViewById(R.id.question123);
+        question.setText(bd.dao().laQuestion(idQuestion));
+
+        //Moyenne
+        float moyennes = service.moyenneVotes(idQuestion);
+        TextView moy = (TextView)findViewById(R.id.moyenne);
+        moy.setText("" + moyennes);
+
+        //Écart type
+
+
         /* Data and function call to bind the data to the graph */
         Map<Integer, Integer> dataGraph = new HashMap<Integer, Integer>() {{
-            put(1, 4);
-            put(2, 3);
-            put(3, 5);
-            put(4, 2);
-            put(5, 1);
+            put(1, bd.dao().votesPourQuestionParNote(idQuestion, 1).size());
+            put(2, bd.dao().votesPourQuestionParNote(idQuestion, 2).size());
+            put(3, bd.dao().votesPourQuestionParNote(idQuestion, 3).size());
+            put(4, bd.dao().votesPourQuestionParNote(idQuestion, 4).size());
+            put(5, bd.dao().votesPourQuestionParNote(idQuestion, 5).size());
         }};
         setData(dataGraph);
     }

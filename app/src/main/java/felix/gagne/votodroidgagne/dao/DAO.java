@@ -25,6 +25,15 @@ public abstract class DAO {
     @Query("SELECT * FROM Question")
     public abstract List<Question> tousLesQuestions();
 
+    @Query("SELECT * FROM Vote where idQuestion = :qID")
+    public abstract List<Vote> votesPour(Long qID);
+
+    @Query("SELECT * FROM Vote where idQuestion = :qID and value = :note")
+    public abstract List<Vote> votesPourQuestionParNote(Long qID, int note);
+
+    @Query("SELECT question FROM Question where id = :qID")
+    public abstract String laQuestion(Long qID);
+
     @Query("SELECT * FROM Vote")
     public abstract List<Vote> tousLesVote();
 

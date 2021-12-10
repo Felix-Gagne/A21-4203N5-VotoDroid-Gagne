@@ -96,8 +96,17 @@ public class Service {
     }
 
 
-    public float moyenneVotes(Question question) {
-        return 0;
+    public float moyenneVotes(Long idQuestion)
+    {
+        int moyenne;
+
+        int nbValeur = maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + maBD.dao().votesPourQuestionParNote(idQuestion,2).size() + maBD.dao().votesPourQuestionParNote(idQuestion,3).size() +
+                maBD.dao().votesPourQuestionParNote(idQuestion,4).size() + maBD.dao().votesPourQuestionParNote(idQuestion,5).size();
+
+        moyenne = (maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + (maBD.dao().votesPourQuestionParNote(idQuestion,2).size() * 2) + (maBD.dao().votesPourQuestionParNote(idQuestion,3).size() * 3) +
+                (maBD.dao().votesPourQuestionParNote(idQuestion,4).size() * 4) + (maBD.dao().votesPourQuestionParNote(idQuestion,5).size() * 5)) / nbValeur ;
+
+        return moyenne;
     }
 
 
@@ -120,16 +129,5 @@ public class Service {
     {
         maBD.dao().supprimerVoteBd();
         toutesLesVotes().clear();
-    }
-
-    public void accessQuestion(Question vdQuestion)
-    {
-        for(Vote v : toutesLesVotes())
-        {
-            if(v.idQuestion == vdQuestion.id)
-            {
-                
-            }
-        }
     }
 }
