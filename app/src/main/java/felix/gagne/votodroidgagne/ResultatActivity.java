@@ -84,8 +84,10 @@ public class ResultatActivity extends AppCompatActivity {
         TextView moy = (TextView)findViewById(R.id.moyenne);
         moy.setText("" + moyennes);
 
-        //Écart type
-
+        //Écart type ne marche pas mais voici ce que j'ai fait
+//        double ecart = service.ecartTypeVotes(idQuestion);
+//        TextView ecart1 = (TextView)findViewById(R.id.moyenne);
+//        moy.setText("" + ecart);
 
         /* Data and function call to bind the data to the graph */
         Map<Integer, Integer> dataGraph = new HashMap<Integer, Integer>() {{

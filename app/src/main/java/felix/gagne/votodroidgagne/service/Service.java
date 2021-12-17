@@ -98,22 +98,50 @@ public class Service {
 
     public float moyenneVotes(Long idQuestion)
     {
-        int moyenne;
+        float moyenne1;
 
         int nbValeur = maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + maBD.dao().votesPourQuestionParNote(idQuestion,2).size() + maBD.dao().votesPourQuestionParNote(idQuestion,3).size() +
                 maBD.dao().votesPourQuestionParNote(idQuestion,4).size() + maBD.dao().votesPourQuestionParNote(idQuestion,5).size();
 
-        moyenne = (maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + (maBD.dao().votesPourQuestionParNote(idQuestion,2).size() * 2) + (maBD.dao().votesPourQuestionParNote(idQuestion,3).size() * 3) +
+        moyenne1 = (maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + (maBD.dao().votesPourQuestionParNote(idQuestion,2).size() * 2) + (maBD.dao().votesPourQuestionParNote(idQuestion,3).size() * 3) +
                 (maBD.dao().votesPourQuestionParNote(idQuestion,4).size() * 4) + (maBD.dao().votesPourQuestionParNote(idQuestion,5).size() * 5)) / nbValeur ;
 
-        return moyenne;
+        return moyenne1;
     }
 
 
-    public float ecartTypeVotes(Question question) {
+    public double ecartTypeVotes(Long idQuestion) {
+        //l'ecart type ne fonctionne pas, mais voici le code.
+//        double ecartType;
+//        int moyenne;
+//        int nbVotes;
+//        int somme;
+//        int division;
+//
+//        //Calcule le nombre de vote
+//        nbVotes = maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + maBD.dao().votesPourQuestionParNote(idQuestion,2).size() + maBD.dao().votesPourQuestionParNote(idQuestion,3).size() +
+//                maBD.dao().votesPourQuestionParNote(idQuestion,4).size() + maBD.dao().votesPourQuestionParNote(idQuestion,5).size();
+//
+//        //Calculer la moyenne.
+//        moyenne = (maBD.dao().votesPourQuestionParNote(idQuestion,1).size() + (maBD.dao().votesPourQuestionParNote(idQuestion,2).size() * 2) + (maBD.dao().votesPourQuestionParNote(idQuestion,3).size() * 3) +
+//                (maBD.dao().votesPourQuestionParNote(idQuestion,4).size() * 4) + (maBD.dao().votesPourQuestionParNote(idQuestion,5).size() * 5)) / nbVotes ;
+//
+//        //Somme de x * ((moyenne - x) * (moyenne - x))
+//        //X = valeur du vote
+//        somme = (maBD.dao().votesPourQuestionParNote(idQuestion, 1).size() * ((moyenne - 1) * (moyenne - 1)) + (maBD.dao().votesPourQuestionParNote(idQuestion, 2).size() * ((moyenne - 2) * (moyenne - 2)) +
+//                (maBD.dao().votesPourQuestionParNote(idQuestion, 3).size() * ((moyenne - 3) * (moyenne - 3)) + (maBD.dao().votesPourQuestionParNote(idQuestion, 4).size() * ((moyenne - 4) * (moyenne - 4)) +
+//                        (maBD.dao().votesPourQuestionParNote(idQuestion, 5).size() * ((moyenne - 5) * (moyenne - 5)))))));
+//
+//        //Division de la somme par le nombre de vote
+//        division = somme / nbVotes;
+//
+//        //Racine carrer de la divison
+//        ecartType = Math.sqrt(division);
+//
+//        return ecartType;
+
         return 0;
     }
-
 
     public Map<Integer, Integer> distributionVotes(Question question) {
         return null;
@@ -122,6 +150,8 @@ public class Service {
     public void supprimerQuestion()
     {
         maBD.dao().supprimerQuestionBd();
+        maBD.dao().supprimerVoteBd();
+        toutesLesVotes().clear();
         toutesLesQuestions().clear();
     }
 

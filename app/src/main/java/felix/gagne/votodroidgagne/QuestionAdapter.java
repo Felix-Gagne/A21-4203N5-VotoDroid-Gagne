@@ -59,14 +59,16 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     {
         //Prend l'élément du dataset a cette position
         //Remplace le contenu de la vue avec cet élément
-        Question questionCourante = list.get(position);
+        Question questionCourante = new Question();
+        questionCourante = list.get(position);
+        Long questionCourante1 = questionCourante.id;
         holder.tvQuestion.setText(questionCourante.question);
         Log.i("DEBOGAGE", "appel a onBindViewHolder" + position);
         holder.tvQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), VoteActivity.class);
-                intent.putExtra("idQuestion", questionCourante.id);
+                intent.putExtra("idQuestion", questionCourante1);
                 v.getContext().startActivity(intent);
             }
         });
@@ -75,7 +77,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ResultatActivity.class);
-                intent.putExtra("idQuestion", questionCourante.id);
+                intent.putExtra("idQuestion", questionCourante1);
                 v.getContext().startActivity(intent);
             }
         });
